@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <title>My Library</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>My Book Reviews</h1>
+            <p>List of all the books I'ev read, their review and rating</p>
+        </div>
+        <div class="reviews">
+            <div class="reviews-constants">
+                <h2>My reviews</h2>
+                <a href="/search"><button>Add</button></a>
+            </div>
+            <% if(locals.reviews) {%>
+                <ul>
+                    <% reviews.forEach(reviews => { %>
+                        <li></li>
+                    <% }); %>
+                </ul>
+            <% } else {%>
+                <h2>No reviews made. Click on the add button to add one!</h2>
+            <% } %>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>
