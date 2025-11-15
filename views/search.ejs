@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/search-styles.css">
+    <title>My Library</title>
+</head>
+<body>
+    <div class="container">
+        <div class="search-bar">
+            <form action="/search" method="POST">
+                <input type="text" placeholder="Search..." name="book_name" autofocus autocomplete="off">
+                <button>Search</button>
+            </form>
+        </div>
+        <div class="search-results">
+            <% if(locals.search_results){ %>
+                <% search_results.forEach(element => { %>
+                    <% if(element.cover_i){ %>
+                        <div class="search-entry">
+                            <img src="https://covers.openlibrary.org/b/id/<%= element.cover_i %>-L.jpg" alt="book_cover">
+                            <h3 id="title"><%= element.title %></h3>
+                            <h4 id="author"><%= element.author_name %></h4>
+                            <a href="/reviews"><button>Review</button></a>
+                        </div>
+                    <% } %>
+                <% }); %>
+            <% } else { %>
+                <h2>No results</h2>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>
