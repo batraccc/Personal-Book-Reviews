@@ -18,11 +18,20 @@
                 <a href="/search"><button>Add</button></a>
             </div>
             <% if(locals.reviews) {%>
-                <ul>
-                    <% reviews.forEach(reviews => { %>
-                        <li></li>
-                    <% }); %>
-                </ul>
+                <% reviews.forEach(review => { %>
+                    <div class="review">
+                        <div class="book-cover">
+                            <img src="<%= review.cover_url %>" alt="book cover">
+                        </div>
+                        <div class="review-details">
+                            <h3>Title: <%= review.book_title %></h3>
+                            <h3>Author: <%= review.book_author %></h3>
+                            <h3>Published: <%= review.book_publish_year %></h3>
+                            <p><%= review.review_text %></p>
+                            <p>Rating: <%= review.rating %>/5</p>
+                        </div>
+                    </div>
+                <% }); %>
             <% } else {%>
                 <h2>No reviews made. Click on the add button to add one!</h2>
             <% } %>

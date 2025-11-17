@@ -11,8 +11,6 @@ dotenv.config();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-let search_results = [];
-
 const db = new pg.Client({
     user: process.env.DB_USER,
     host: process.env.DB_HOST,
@@ -24,12 +22,36 @@ const db = new pg.Client({
 db.connect();
 
 app.get("/", async (req, res) => {
-    res.render("index.ejs");
+    try{
+        const response = await db.query("SELECT * FROM recenzija_knjige");
+        if(response.rows.length != 0){
+            res.render("index.ejs", {reviews: response.rows}); 
+        } else {
+            res.render("index.ejs");
+        }
+    } catch (err){
+        console.log(err);
+    }
+    
 })
 
 app.get("/search", async (req, res) => {
     res.render("search.ejs");
 })
+
+app.post("/reviews", (req, res) => {
+    res.render("reviews.ejs", { book_data: req.body });
+});
+
+app.post("/reviews/save", async (req, res) => {
+    const { title, author, publish_year, cover_id, key, review, rating } = req.body;
+    await db.query(
+        "INSERT INTO recenzija_knjige (book_title, book_author, book_publish_year, review_text, rating, cover_url, book_id) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+        [title, author, publish_year, review, rating, cover_id, key]
+    );
+
+    res.redirect("/");
+});
 
 app.post("/search", async (req, res) => {
     const book_name = (req.body.book_name).trim().replace(/\s+/g, '+').toLowerCase();

@@ -22,7 +22,14 @@
                             <img src="https://covers.openlibrary.org/b/id/<%= element.cover_i %>-L.jpg" alt="book_cover">
                             <h3 id="title"><%= element.title %></h3>
                             <h4 id="author"><%= element.author_name %></h4>
-                            <a href="/reviews"><button>Review</button></a>
+                            <form action="/reviews" method="POST">
+                                <input type="hidden" name="title" value="<%= element.title %>">
+                                <input type="hidden" name="author" value="<%= element.author_name ? element.author_name[0] : '' %>">
+                                <input type="hidden" name="publish_year" value="<%= element.first_publish_year %>">
+                                <input type="hidden" name="cover_id" value="<%= element.cover_i %>">
+                                <input type="hidden" name="key" value="<%= element.key %>">
+                                <button type="submit">Review</button>
+                            </form>
                         </div>
                     <% } %>
                 <% }); %>
