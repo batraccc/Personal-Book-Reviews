@@ -27,8 +27,28 @@
                             <h3>Title: <%= review.book_title %></h3>
                             <h3>Author: <%= review.book_author %></h3>
                             <h3>Published: <%= review.book_publish_year %></h3>
-                            <p><%= review.review_text %></p>
+                            <p id="text<%= review.id %>"><%= review.review_text %></p>
+                            <form class="edit" action="/edit" method="POST">
+                                <input type="hidden" name="book_id" value="<%= review.id %>">
+                    
+                                <textarea id="input<%= review.id %>"
+                                          name="updated_review"
+                                          hidden="true"><%= review.review_text %></textarea>
+                    
+                                <button id="done<%= review.id %>"
+                                        type="submit"
+                                        hidden="true">Save</button>
+                            </form>
                             <p>Rating: <%= review.rating %>/5</p>
+                        </div>
+                        <div class="action-buttons">
+                            <form action="/delete" method="POST">
+                                <button value="<%= review.book_id%>" name="delete_button">Delete</button>
+                            </form>
+                            <button id="edit<%= review.id %>"
+                                onclick="editHandler('<%= review.id %>')">
+                                Edit
+                            </button>
                         </div>
                     </div>
                 <% }); %>
@@ -37,6 +57,6 @@
             <% } %>
         </div>
     </div>
-    <script src="js/index.js"></script>
+    <script src="/js/index.js"></script>
 </body>
 </html>

@@ -63,6 +63,31 @@ app.post("/search", async (req, res) => {
     }
 })
 
+app.post("/delete", async(req, res) => {
+    const book_id = req.body.delete_button;
+    try{
+        db.query("DELETE FROM recenzija_knjige WHERE book_id = ($1)", [book_id]);
+        res.redirect("/");
+    } catch(err){
+        console.log(err);
+    }
+})
+
+app.post("/edit", async (req, res) => {
+    const id = req.body.book_id;
+    const updated_review = req.body.updated_review;
+    try {
+        await db.query(
+            "UPDATE recenzija_knjige SET review_text = $1 WHERE id = $2",
+            [updated_review, id]
+        );
+
+        res.redirect("/");
+    } catch (err) {
+        console.log(err);
+    }
+});
+
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
