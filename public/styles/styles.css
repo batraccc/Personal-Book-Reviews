@@ -1,29 +1,187 @@
-body{
-    background-color: #DEDED1;
-}
+
 
 .container{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-.reviews{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
-}
-
-.reviews-constants{
-    display: flex;
-    justify-content: space-evenly;
+    gap: 20px;
 }
 
 .header{
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 6px solid #F08B51;
+    width: 70%;
+    background-color: #FFF8E8;
+}
+
+.header p{
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1rem;
+    margin-bottom: 70px;
+}
+
+.reviews{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 6px solid #F08B51;
+    background-color: #FFF8E8;
+    width: 70%;
+}
+
+.reviews-constants{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.reviews-constants h2{
+    padding-left: 40px;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    font-size: 1.5rem;
+}
+
+.reviews-constants button{
+    margin-right: 30px;
+    width: 100px;
+    height: 40px;
+    border-radius: 4px;
+    border: 3px solid #BB6653;
+    background-color: transparent;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    color: #BB6653;
+}
+
+.review{
+    display: flex;
+    width: 100%;
+}
+
+.review img{
+    height: 300px;
+    width: 200px;
+    padding: 15px;
+}
+
+.book-cover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.review-details{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-left: 20px;
+    position: relative;
+}
+
+.review-details .basic-details{
+    display: flex;
+    flex-direction: column;
+}
+
+.review-details .basic-details h3{
+    margin-bottom: 0;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bolder;
+    color: #BB6653;
+    font-style: normal;
+    font-size: 1rem;
+}
+
+.review-details .review-text{
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-size: 1.2rem;
+}
+
+.review-details .rating{
+    position: absolute;
+    top: 265px;
+}
+
+.review-details .rating p{
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-size: 1.2rem;
+}
+
+.review-details button{
+    width: 100px;
+    height: 40px;
+    border-radius: 4px;
+    border: 3px solid #BB6653;
+    background-color: transparent;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    color: #BB6653;
+}
+
+.action-buttons{
+    display: flex;
+    position: absolute;
+    left: 77.9%;
+    width: 100px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+}
+
+.action-buttons button{
+    width: 100px;
+    height: 40px;
+    border-radius: 4px;
+    border: 3px solid #BB6653;
+    background-color: transparent;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    color: #BB6653;
+}
+
+#no-reviews{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+}
+
+
+h1{
+    font-family: "Merriweather", serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 5rem;
+    margin-bottom: 0;
+}
+
+textarea{
+    width: 900px;
+    height: 160px;
 }

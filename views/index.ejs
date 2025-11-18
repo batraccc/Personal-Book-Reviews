@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/styles.css">
     <title>My Library</title>
 </head>
@@ -10,11 +13,11 @@
     <div class="container">
         <div class="header">
             <h1>My Book Reviews</h1>
-            <p>List of all the books I'ev read, their review and rating</p>
+            <p>List of all the books I've read, their review and rating</p>
         </div>
         <div class="reviews">
             <div class="reviews-constants">
-                <h2>My reviews</h2>
+                <h2>MY REVIEWS</h2>
                 <a href="/search"><button>Add</button></a>
             </div>
             <% if(locals.reviews) {%>
@@ -24,10 +27,14 @@
                             <img src="<%= review.cover_url %>" alt="book cover">
                         </div>
                         <div class="review-details">
-                            <h3>Title: <%= review.book_title %></h3>
-                            <h3>Author: <%= review.book_author %></h3>
-                            <h3>Published: <%= review.book_publish_year %></h3>
-                            <p id="text<%= review.id %>"><%= review.review_text %></p>
+                            <div class="basic-details">
+                                <h3>Title: <%= review.book_title %></h3>
+                                <h3>Author: <%= review.book_author %></h3>
+                                <h3>Publish year: <%= review.book_publish_year %></h3> 
+                            </div>
+                            <div class="review-text">
+                                <p id="text<%= review.id %>"><%= review.review_text %></p>
+                            </div>
                             <form class="edit" action="/edit" method="POST">
                                 <input type="hidden" name="book_id" value="<%= review.id %>">
                     
@@ -39,7 +46,10 @@
                                         type="submit"
                                         hidden="true">Save</button>
                             </form>
-                            <p>Rating: <%= review.rating %>/5</p>
+                            <div class="rating">
+                               <p>Rating: <%= review.rating %>/5</p> 
+                            </div>
+                            
                         </div>
                         <div class="action-buttons">
                             <form action="/delete" method="POST">
@@ -53,7 +63,7 @@
                     </div>
                 <% }); %>
             <% } else {%>
-                <h2>No reviews made. Click on the add button to add one!</h2>
+                <h2 id="no-reviews">No reviews made. Click on the add button to add one!</h2>
             <% } %>
         </div>
     </div>
